@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% block title %}Movies{% endblock %}
+
+{% block hero %}
+<div class="container py-4">
+  <h1 class="mb-2">Movies</h1>
+  <p class="text-muted">Browse all available titles or search below.</p>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="section mb-4">
+  <form method="GET" class="row g-2">
+    <div class="col-9 col-md-10">
+      <input class="form-control" type="text" name="search" value="{{ request.GET.search }}" placeholder="Search movies...">
+    </div>
+    <div class="col-3 col-md-2 d-grid">
+      <button class="btn btn-primary" type="submit">Search</button>
+    </div>
+  </form>
+</div>
+
+<div class="row g-3">
+  {% for movie in template_data.movies %}
+    <div class="col-12 col-sm-6 col-lg-4">
+      <div class="movie-card h-100">
+        <img class="movie-thumb" src="{{ movie.image.url }}" alt="{{ movie.name }}">
+        <div class="movie-pad">
+          <div class="d-flex justify-content-between">
+            <h5 class="mb-1">{{ movie.name }}</h5>
+            <span class="badge-price">${{ movie.price }}</span>
+          </div>
+          <p class="movie-meta">{{ movie.description|truncatechars:90 }}</p>
+          <div class="d-flex justify-content-end">
+            <a href="{% url 'movies_show' id=movie.id %}" class="btn btn-outline-primary btn-sm">View</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  {% empty %}
+    <p class="text-muted">No movies found.</p>
+  {% endfor %}
+</div>
+{% endblock %}
+

@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% block title %}{{ template_data.movie.name }}{% endblock %}
+
+{% block content %}
+<div class="detail-wrap mb-4">
+  <div>
+    <img class="detail-poster" src="{{ template_data.movie.image.url }}" alt="{{ template_data.movie.name }}">
+  </div>
+  <div>
+    <h1>{{ template_data.movie.name }}</h1>
+    <p class="lead">{{ template_data.movie.description }}</p>
+    <div class="mb-3">
+      <span class="badge-price">${{ template_data.movie.price }}</span>
+    </div>
+
+    <!-- Add to cart -->
+    <form method="POST" action="{% url 'cart_add' id=template_data.movie.id %}" class="row g-2">
+      {% csrf_token %}
+      <div class="col-5 col-md-3">
+        <input type="number" class="form-control" name="quantity" min="1" value="1">
+      </div>
+      <div class="col-7 col-md-4">
+        <button type="submit" class="btn btn-primary w-100">Add to Cart</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="section">
+  <h3 class="mb-3">Reviews</h3>
+
+  {% if user.is_authenticated %}
+    <form method="POST" action="{% url 'movies_create_review' id=template_data.movie.id %}" class="mb-3">
+      {% csrf_token %}
+      <textarea class="form-control mb-2" name="comment" rows="3" placeholder="Write a review..."></textarea>
+      <button class="btn btn-outline-primary" type="submit">Post</button>
+    </form>
+  {% else %}
+    <p class="text-muted">Log in to write a review.</p>
+  {% endif %}
+
+  {% for review in template_data.reviews %}
+    <div class="border rounded p-3 mb-2">
+      <small class="text-muted">{{ review.user.username }} · {{ review.date }}</small>
+      <div class="mt-1">{{ review.comment }}</div>
+
+      {% if user.is_authenticated and user == review.user %}
+        <div class="mt-2 d-flex gap-2">
+          <a href="{% url 'movies_edit_review' id=template_data.movie.id review_id=review.id %}" class="btn btn-outline-primary btn-sm">Edit</a>
+          <a href="{% url 'movies_delete_review' id=template_data.movie.id review_id=review.id %}" class="btn btn-danger btn-sm">Delete</a>
+        </div>
+      {% endif %}
+    </div>
+  {% empty %}
+    <p class="text-muted">No reviews yet.</p>
+  {% endfor %}
+</div>
+{% endblock %}

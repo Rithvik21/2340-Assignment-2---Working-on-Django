@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block title %}Sign Up{% endblock %}
+
+{% block hero %}
+<div class="container py-4">
+  <h1 class="mb-2">Sign Up</h1>
+  <p class="text-muted">Create an account to start reviewing movies and tracking orders.</p>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+  <div class="col-12 col-md-6">
+    <div class="section">
+      <form method="POST" class="d-grid gap-2">
+        {% csrf_token %}
+        {{ template_data.form.as_p }}
+        <button class="btn btn-primary" type="submit">Create Account</button>
+      </form>
+      <p class="text-muted mt-3 mb-0">
+        Already have an account? <a href="{% url 'login' %}">Log in</a>.
+      </p>
+    </div>
+  </div>
+</div>
+{% endblock %}

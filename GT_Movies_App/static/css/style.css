@@ -1,0 +1,231 @@
+
+:root{
+  --bg:#f7f7f8; 
+  --surface:#ffffff; 
+  --text:#1e1f23;     
+  --muted:#6b7280;    
+  --line:#e6e7eb;   
+  --brand:#2f5d62;   
+  --brand-2:#b08968;  
+  --shadow:0 8px 24px rgba(0,0,0,.06);
+}
+
+html,body{height:100%}
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--text);
+  font-family: "Source Sans 3", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  line-height:1.55;
+}
+
+
+h1,h2,h3,h4{
+  font-family: "Playfair Display", Georgia, "Times New Roman", serif;
+  font-weight:700;
+  letter-spacing:.2px;
+}
+.lead{color:var(--muted)}
+
+
+.navbar-dark.bg-dark{
+  background:#1f2937 !important;
+  border-bottom:1px solid #111827;
+}
+.navbar-brand img{filter:grayscale(10%);}
+
+
+.section{
+  background:var(--surface);
+  border:1px solid var(--line);
+  border-radius:14px;
+  box-shadow:var(--shadow);
+  padding:20px;
+}
+.section + .section{margin-top:16px}
+.hr{height:1px;background:var(--line);border:0;margin:16px 0}
+
+
+.btn{
+  border-radius:999px;
+  padding:.6rem 1rem;
+  font-weight:600;
+}
+.btn-primary{
+  background:var(--brand);
+  border-color:var(--brand);
+}
+.btn-outline-primary{
+  color:var(--brand);
+  border-color:var(--brand);
+}
+.btn-outline-primary:hover{background:var(--brand); color:#fff}
+
+
+.form-control{
+  border-radius:12px;
+  border:1px solid var(--line);
+}
+
+
+.movie-card{
+  background:var(--surface);
+  border:1px solid var(--line);
+  border-radius:14px;
+  overflow:hidden;
+  box-shadow:var(--shadow);
+  transition:transform .18s ease;
+}
+.movie-card:hover{transform:translateY(-3px)}
+.movie-thumb{
+  width:100%;
+  aspect-ratio: 3/2;
+  object-fit:cover;
+}
+.movie-pad{padding:14px}
+.movie-meta{color:var(--muted);font-size:.95rem}
+
+
+.detail-wrap{
+  display:grid; grid-template-columns: 420px 1fr; gap:24px;
+}
+@media (max-width: 992px){ .detail-wrap{ grid-template-columns: 1fr; } }
+.detail-poster{
+  width:100%; border-radius:14px; border:1px solid var(--line); box-shadow:var(--shadow);
+}
+
+.table{
+  background:var(--surface);
+  border:1px solid var(--line);
+  border-radius:12px;
+  overflow:hidden;
+}
+.table thead th{background:#fafafa}
+
+footer.bg-dark{background:#1f2937 !important}
+footer small{color:#d1d5db}
+
+.text-muted{color:var(--muted) !important}
+.badge-price{
+  background:#eef2f7;
+  color:#111827;
+  border:1px solid var(--line);
+  border-radius:999px;
+  padding:.25rem .55rem;
+  font-weight:700;
+  font-size:.85rem;
+}
+
+body.login #container { max-width: 460px; }
+
+/* Admin CSS */
+
+html, body { background: var(--bg) !important; color: var(--text); }
+
+#header { background: var(--brand) !important; border-bottom: 1px solid rgba(0,0,0,.06) !important; }
+#branding h1 a { color: #fff !important; font-family: "Playfair Display", Georgia, "Times New Roman", serif; font-weight: 700; letter-spacing: .2px; }
+
+.breadcrumbs { background: var(--surface) !important; border-bottom: 1px solid var(--line) !important; color: var(--muted) !important; }
+.breadcrumbs a { color: var(--brand) !important; }
+
+.module, .inline-group, .app-auth .module {
+  background: var(--surface) !important;
+  border: 1px solid var(--line) !important;
+  border-radius: 14px !important;
+  box-shadow: var(--shadow) !important;
+  overflow: hidden;
+}
+
+.module caption, .inline-group h2 {
+  background: var(--brand) !important;
+  color: #fff !important;
+  font-weight: 600; letter-spacing: .2px;
+}
+
+#changelist table, .results, .change-list .results {
+  background: var(--surface) !important;
+  border: 1px solid var(--line) !important;
+  border-radius: 12px !important;
+  overflow: hidden;
+}
+#changelist thead th, .results thead th { background: #fafafa !important; color: var(--text) !important; border-bottom: 1px solid var(--line) !important; }
+#changelist tbody tr:nth-child(even), .results tbody tr:nth-child(even) { background: #fbfbfd !important; }
+#changelist tbody tr:hover, .results tbody tr:hover { background: #f5f7fb !important; }
+
+#content-main input[type="text"],
+#content-main input[type="number"],
+#content-main input[type="email"],
+#content-main input[type="url"],
+#content-main input[type="password"],
+#content-main select,
+#content-main textarea,
+#changelist-search input[type="text"],
+#toolbar form input[type="text"] {
+  background: #fff !important;
+  border: 1px solid var(--line) !important;
+  border-radius: 12px !important;
+  box-shadow: none !important;
+}
+
+a.button, .button, .submit-row input {
+  background: var(--brand) !important;
+  border-color: var(--brand) !important;
+  color: #fff !important;
+  border-radius: 999px !important;
+  padding: .55rem 1rem !important;
+  font-weight: 600 !important;
+}
+a.button:hover, .button:hover, .submit-row input:hover { filter: brightness(0.95); }
+.deletelink { background: var(--brand-2) !important; border-color: var(--brand-2) !important; }
+
+body.login { background: var(--bg) !important; }
+body.login #container {
+  background: var(--surface) !important;
+  border: 1px solid var(--line) !important;
+  border-radius: 14px !important;
+  box-shadow: var(--shadow) !important;
+  padding: 24px !important;
+}
+
+#header, #header * { color: #fff !important; }
+#content, #content * { color: var(--text) !important; }
+
+.module caption, .inline-group h2 {
+  background: var(--brand) !important;
+  color: #fff !important;
+}
+
+.module a, .inline-group a {
+  color: var(--brand) !important;
+  font-weight: 600;
+}
+.module a:hover { text-decoration: underline; }
+
+#content-related, #content-related * {
+  color: var(--text) !important;
+}
+#content-related h2 {
+  color: var(--brand) !important;
+  font-weight: 600;
+}
+
+.module td, .module th, .module caption {
+  color: var(--text) !important;
+  background: var(--surface) !important;
+}
+
+.module a.addlink {
+  color: var(--brand) !important;
+  font-weight: 600;
+}
+.module a.changelink {
+  color: var(--brand-2) !important;
+  font-weight: 600;
+}
+
+#content-main .module table tbody tr:nth-child(even) {
+  background: #f9fafb !important;
+}
+#content-main .module table tbody tr:nth-child(odd) {
+  background: var(--surface) !important;
+}

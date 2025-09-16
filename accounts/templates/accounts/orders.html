@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% block title %}Your Orders{% endblock %}
+
+{% block hero %}
+<div class="container py-4">
+  <h1 class="mb-2">Your Orders</h1>
+  <p class="text-muted">View your past purchases and order details below.</p>
+</div>
+{% endblock %}
+
+{% block content %}
+{% if template_data.orders %}
+  <div class="table-responsive">
+    <table class="table align-middle">
+      <thead>
+        <tr>
+          <th>Order ID</th>
+          <th>Date</th>
+          <th>Items</th>
+          <th>Total</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for order in template_data.orders %}
+        <tr>
+          <td>{{ order.id }}</td>
+          <td>{{ order.date }}</td>
+          <td>
+            <ul class="list-unstyled mb-0">
+              {% for item in order.items.all %}
+              <li>
+                <a href="{% url 'movies_show' id=item.movie.id %}">{{ item.movie.name }}</a> × {{ item.quantity }}
+              </li>
+              {% endfor %}
+            </ul>
+          </td>
+          <td>${{ order.total }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+{% else %}
+  <p class="text-muted">You have no orders yet.</p>
+{% endif %}
+{% endblock %}

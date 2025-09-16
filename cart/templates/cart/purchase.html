@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block title %}Purchase Complete{% endblock %}
+
+{% block content %}
+<div class="section">
+  <h1 class="mb-2">Thanks for your purchase</h1>
+  <p class="text-muted mb-3">Your order has been created.</p>
+  {% if template_data.order_id %}
+    <p class="mb-3">Order #{{ template_data.order_id }}</p>
+  {% endif %}
+  <div class="d-flex gap-2">
+    <a class="btn btn-primary" href="{% url 'orders' %}">View my orders</a>
+    <a class="btn btn-outline-primary" href="{% url 'movies_index' %}">Continue browsing</a>
+  </div>
+</div>
+{% endblock %}
