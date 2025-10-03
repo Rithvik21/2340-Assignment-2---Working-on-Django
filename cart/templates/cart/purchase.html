@@ -1,16 +1,16 @@
 {% extends 'base.html' %}
+{% block title %}Purchase Complete{% endblock %}
+
 {% block content %}
-<div class="p-3">
-  <div class="container">
-    <div class="row mt-3">
-      <div class="col mx-auto mb-3">
-        <h2>Purchase Completed</h2>
-        <hr />
-        <p>Congratulations, purchase completed. Order
-          number is: <b>#{{ template_data.order_id }}</b>
-        </p>
-      </div>
-    </div>
+<div class="section">
+  <h1 class="mb-2">Thanks for your purchase</h1>
+  <p class="text-muted mb-3">Your order has been created.</p>
+  {% if template_data.order_id %}
+    <p class="mb-3">Order #{{ template_data.order_id }}</p>
+  {% endif %}
+  <div class="d-flex gap-2">
+    <a class="btn btn-primary" href="{% url 'orders' %}">View my orders</a>
+    <a class="btn btn-outline-primary" href="{% url 'movies_index' %}">Continue browsing</a>
   </div>
 </div>
-{% endblock content %}
+{% endblock %}

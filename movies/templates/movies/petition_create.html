@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container mt-4">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card">
+        <div class="card-header">
+          <h2 class="mb-0">{{ template_data.title }}</h2>
+        </div>
+        <div class="card-body">
+          <form method="post">
+            {% csrf_token %}
+            <div class="mb-3">
+              <label for="title" class="form-label">Movie Title *</label>
+              <input type="text" class="form-control" id="title" name="title" 
+                     placeholder="Enter the movie title you'd like to see added" required>
+              <div class="form-text">Be specific about the movie title and year if applicable.</div>
+            </div>
+            
+            <div class="mb-3">
+              <label for="description" class="form-label">Description *</label>
+              <textarea class="form-control" id="description" name="description" rows="5" 
+                        placeholder="Explain why this movie should be added to our catalog..." required></textarea>
+              <div class="form-text">
+                Tell us why this movie would be a great addition. Include details about the genre, 
+                director, cast, or any other reasons that make it special.
+              </div>
+            </div>
+            
+            <div class="d-flex justify-content-between">
+              <a href="{% url 'petition_list' %}" class="btn btn-secondary">
+                <i class="fas fa-arrow-left"></i> Back to Petitions
+              </a>
+              <button type="submit" class="btn btn-primary">
+                <i class="fas fa-paper-plane"></i> Create Petition
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+      
+      <div class="card mt-4">
+        <div class="card-header">
+          <h5 class="mb-0">Tips for a Great Petition</h5>
+        </div>
+        <div class="card-body">
+          <ul class="mb-0">
+            <li><strong>Be specific:</strong> Include the full movie title and release year</li>
+            <li><strong>Explain why:</strong> Tell us what makes this movie special or popular</li>
+            <li><strong>Be respectful:</strong> Keep your description professional and constructive</li>
+            <li><strong>Check first:</strong> Make sure the movie isn't already in our catalog</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

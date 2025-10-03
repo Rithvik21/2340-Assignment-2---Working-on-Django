@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container mt-4 text-center">
+  <h3>Thanks for your feedback!</h3>
+  <a class="btn btn-outline-primary mt-3" href="{% url 'cart_survey_list' %}">View all statements</a>
+  <a class="btn btn-link mt-3" href="{% url 'movies_index' %}">Back to Movies</a>
+</div>
+{% endblock %}

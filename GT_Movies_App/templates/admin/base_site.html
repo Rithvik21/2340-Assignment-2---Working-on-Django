@@ -1,0 +1,14 @@
+{% extends "admin/base.html" %}
+{% load static %}
+
+{% block extrastyle %}
+  {{ block.super }}
+  <link rel="stylesheet" href="{% static 'css/style.css' %}?v=site">
+  <link rel="stylesheet" href="{% static 'css/admin-overrides.css' %}?v=2">
+{% endblock %}
+
+{% block branding %}
+  <h1 id="site-name"><a href="{% url 'admin:index' %}">GT Movies Admin</a></h1>
+{% endblock %}
+
+

@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container mt-4">
+  <h3>{{ template_data.title }}</h3>
+  <ul class="list-group">
+    {% for f in template_data.feedbacks %}
+    <li class="list-group-item">
+      <div class="d-flex justify-content-between">
+        <strong>{{ f.name|default:"Anonymous" }}</strong>
+        <small class="text-muted">{{ f.created_at|date:"Y-m-d H:i" }}</small>
+      </div>
+      <div class="mt-2">{{ f.message }}</div>
+      <div class="mt-1"><small class="text-muted">Order #{{ f.order.id }}</small></div>
+    </li>
+    {% empty %}
+    <li class="list-group-item">No statements yet.</li>
+    {% endfor %}
+  </ul>
+</div>
+{% endblock %}
